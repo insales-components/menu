@@ -1,0 +1,19 @@
+.menu {
+  display: flex;
+  list-style: none;
+  box-shadow: none;
+  width: auto;
+  background: transparent;
+  flex-direction: row;
+  flex-wrap: wrap;
+  flex: 1 1 auto;
+  padding-left: 0;
+  margin-right: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+.menu-link {
+  word-break: break-word;
+  white-space: normal;
+  text-decoration: none;
+}

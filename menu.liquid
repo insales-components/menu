@@ -1,0 +1,37 @@
+{% comment %}
+  {% include "menu", source_type: 'blog', source_handle: 'blog', menu_class: 'menu-blog' %}
+{% endcomment %}
+
+{% if source_type == 'blogs' %}
+  {% assign list_links = blogs[source_handle].articles %}
+  {% else %}
+  {% assign list_links = linklists[source_handle].links %}
+{% endif %}
+
+{% assign links_limit = links_limit | default: 99 %}
+{% assign menu_class = menu_class | default: 'default-menu' %}
+
+{% if list_links.size > 0 %}
+<ul class="{{ menu_class }} menu level-1" itemscope itemtype="http://schema.org/SiteNavigationElement">
+  {% for link in list_links limit: links_limit %}
+    {% assign is_current = link.current? | default: '' | replace: 'true', 'is-current' %}
+    {% if link.url == article.url %}
+      {% assign is_current = 'is-current' %}
+    {% endif %}
+
+    <li class="{{ menu_class }}-item {{ is_current }}" itemprop="name">
+      <div class="{{ menu_class }}-item-controls menu-item-controls">
+        <a href="{{ link.url }}" class="{{ menu_class }}-link menu-link is-{{ link.url | split: '/' | last }}" itemprop="url">
+          {{ link.title }}
+        </a>
+      </div>
+    </li>
+
+  {% endfor %}
+</ul>
+{% endif %}
+
+{% assign source_handle = null %}
+{% assign source_type = null %}
+{% assign links_limit = null %}
+{% assign menu_class = null %}

@@ -1,0 +1,12 @@
+{
+  "name": "Menu",
+  "version": "1.0.0",
+  "description": "Меню для платформы InSales",
+  "author": "LiquidHub.ru",
+  "type": "snippets",
+  "homepage": "https://github.com/insales-components/menu",
+  "props": {
+    "liquid": true
+  },
+  "dependencies": {}
+}
