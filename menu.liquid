@@ -1,12 +1,17 @@
 {% comment %}
   {% include "menu", source_type: 'blog', source_handle: 'blog', menu_class: 'menu-blog' %}
+  {% include "menu", source_type: 'collection', source_handle: 'all', menu_class: 'collection-main' %}
+  {% include "menu", source_type: 'linklists', source_handle: 'main-menu', menu_class: 'main-menu' %}
 {% endcomment %}
 
 {% if source_type == 'blogs' %}
   {% assign list_links = blogs[source_handle].articles %}
+  {% elsif source_type == 'collection' %}
+  {% assign list_links = collections[source_handle].subcollections %}
   {% else %}
   {% assign list_links = linklists[source_handle].links %}
 {% endif %}
+
 
 {% assign links_limit = links_limit | default: 99 %}
 {% assign menu_class = menu_class | default: 'default-menu' %}
